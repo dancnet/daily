@@ -1,3 +1,9 @@
+import dayjs from 'dayjs';
+import duration from'dayjs/plugin/duration';
+import objectSupport from 'dayjs/plugin/objectSupport';
+dayjs.extend(duration);
+dayjs.extend(objectSupport);
+
 export const parse_time = time => {
     const time_array = time.split('h');
     return {
@@ -10,6 +16,9 @@ export const compute = events => {
     events.forEach(event => {
         const start_time_parsed = parse_time(event.start_time);
         const duration_parsed = parse_time(event.duration);
+        event.end_time = dayjs(start_time_parsed)
+        .add(dayjs.duration(duration_parsed))
+        .format('H[h]mm');
         event.style = {
             top: start_time_parsed.hours * 60 + start_time_parsed.minutes,
             height: duration_parsed.hours * 60 + duration_parsed.minutes

@@ -59,7 +59,7 @@
                     <i>{event.problem}</i>
                 </div>
                 {/if}
-                <b>{event.name} ({event.start_time})</b> - <a href="/calendar/event/{event.id}">Edit</a> - <a href={"#"} on:click|preventDefault={() => delete_event(event.id)}>Delete</a>
+                <b>{event.name} ({event.start_time} - {event.end_time})</b> - <a href="/calendar/event/{event.id}">Edit</a> - <a href={"#"} on:click|preventDefault={() => delete_event(event.id)}>Delete</a>
             </div>
             <div class="pre w3-container">
                 {event.note}
