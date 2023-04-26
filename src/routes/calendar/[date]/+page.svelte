@@ -19,7 +19,7 @@
 
     // now
     let now = compute_now();
-    if (today && browser) {
+    if (browser) {
         let interval = setInterval(() => {
             now = compute_now();
         }, 15000);
